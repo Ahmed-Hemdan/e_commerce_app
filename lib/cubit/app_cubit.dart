@@ -1,3 +1,5 @@
+import 'dart:js_interop';
+
 import 'package:e_commerce_app/Models/Products_model.dart';
 import 'package:e_commerce_app/Services/Dio/DioHelper.dart';
 import 'package:e_commerce_app/cubit/app_state.dart';
@@ -36,6 +38,22 @@ class AppCubit extends Cubit<AppStates> {
     }).catchError((error) {
       print(error.toString());
       emit(GetAllCategoriesError());
+    });
+  }
+
+  List<ProductModel>? categoriesProducts;
+  void getCategoriesProducts(String name) {
+    emit(GetCategoriesProductsLoading());
+    DioHelper.getData(endPoint: "products/category/$name").then((value) {
+      value.data.forEach(
+        (e) => categoriesProducts!.add(
+          ProductModel.fromJson(e),
+        ),
+      );
+      emit(GetCategoriesProductsSuccess());
+    }).catchError((error) {
+      print(error.toString());
+      emit(GetCategoriesProductsError());
     });
   }
 }

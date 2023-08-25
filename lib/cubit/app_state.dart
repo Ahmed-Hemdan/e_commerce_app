@@ -16,3 +16,9 @@ class GetAllCategoriesLoading extends AppStates{}
 class GetAllCategoriesSuccess extends AppStates{}
 
 class GetAllCategoriesError extends AppStates{}
+
+class GetCategoriesProductsLoading extends AppStates{}
+
+class GetCategoriesProductsSuccess extends AppStates{}
+
+class GetCategoriesProductsError extends AppStates{}
