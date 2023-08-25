@@ -1,6 +1,4 @@
-import 'dart:js_interop';
 
-import 'package:dio/dio.dart';
 import 'package:e_commerce_app/Models/Products_model.dart';
 import 'package:e_commerce_app/Services/Dio/DioHelper.dart';
 import 'package:e_commerce_app/cubit/app_state.dart';
