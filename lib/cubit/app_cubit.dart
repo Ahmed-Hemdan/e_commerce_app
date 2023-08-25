@@ -56,4 +56,20 @@ class AppCubit extends Cubit<AppStates> {
       emit(GetCategoriesProductsError());
     });
   }
+
+  void addProduct({
+    required String title,
+    required String price,
+    required String description,
+    required String image,
+    required String category,
+  }) {
+    DioHelper.postData(endPoint: "products", data: {
+      "title": title,
+      "price": price,
+      "description": description,
+      "image": image,
+      "category": category,
+    });
+  }
 }
