@@ -18,4 +18,11 @@ class DioHelper {
   static postData({required String endPoint, required Map data}) async {
     return await dio!.post(endPoint, data: data);
   }
+
+  static putData({
+    required String endPoint,
+    required Map data,
+  }) async {
+    return await dio!.put(endPoint, data: data);
+  }
 }

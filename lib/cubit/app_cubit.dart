@@ -1,5 +1,6 @@
 import 'dart:js_interop';
 
+import 'package:dio/dio.dart';
 import 'package:e_commerce_app/Models/Products_model.dart';
 import 'package:e_commerce_app/Services/Dio/DioHelper.dart';
 import 'package:e_commerce_app/cubit/app_state.dart';
@@ -64,12 +65,41 @@ class AppCubit extends Cubit<AppStates> {
     required String image,
     required String category,
   }) {
+    emit(AddProductLoading());
     DioHelper.postData(endPoint: "products", data: {
       "title": title,
       "price": price,
       "description": description,
       "image": image,
       "category": category,
+    }).then((value) {
+      emit(AddProductSuccess());
+    }).catchError((error) {
+      print(error.toString());
+      emit(AddProductError());
+    });
+  }
+
+  void editProduct({
+    required int id,
+    required String title,
+    required String price,
+    required String description,
+    required String image,
+    required String category,
+  }) {
+    emit(EditProductLoading());
+    DioHelper.putData(endPoint: "products/$id", data: {
+      "title": title,
+      "price": price,
+      "description": description,
+      "image": image,
+      "category": category,
+    }).then((value) {
+      emit(EditProductSuccess());
+    }).catchError((error) {
+      print(error.toString());
+      emit(EditProductError());
     });
   }
 }
