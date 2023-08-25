@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/cubit/app_cubit.dart';
 import 'package:flutter/material.dart';
 
 class MyWidget extends StatelessWidget {
@@ -5,6 +6,14 @@ class MyWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      body: Center(
+        child: ElevatedButton(
+            onPressed: () {
+              AppCubit.get(context).getAllProducts();
+            },
+            child: Icon(Icons.add)),
+      ),
+    );
   }
 }

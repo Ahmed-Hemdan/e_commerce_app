@@ -21,11 +21,11 @@ class ProductModel {
     return ProductModel(
       id: jsonData['id'],
       title: jsonData['title'],
-      price: jsonData['price'],
+      price: jsonData['price'].toDouble(),
       discription: jsonData['description'],
       category: jsonData['category'],
       image: jsonData['image'],
-      rating: jsonData['rating'],
+      rating: RatingModel.fromJson(jsonData["rating"]),
     );
   }
 }
@@ -39,7 +39,7 @@ class RatingModel {
   });
   factory RatingModel.fromJson(jsonData) {
     return RatingModel(
-      rate: jsonData['rate'],
+      rate: jsonData['rate'].toDouble(),
       count: jsonData['count'],
     );
   }
