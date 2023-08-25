@@ -17,4 +17,15 @@ class AppCubit extends Cubit<AppStates> {
       emit(GetAllProductsError());
     });
   }
+
+  List<dynamic>? allcategories;
+  void getAllCategories() {
+    emit(GetAllCategoriesLoading());
+    DioHelper.getData(endPoint: "categories").then((value) {
+      allcategories = value.data;
+      emit(GetAllCategoriesSuccess());
+    }).catchError((error) {
+      emit(GetAllCategoriesError());
+    });
+  }
 }
