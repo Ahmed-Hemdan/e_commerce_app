@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/Components/Custom_Card_Component.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -31,51 +32,19 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
       ),
-      body: Center(
-        child: Stack(
-          clipBehavior: Clip.none,
-          children: [
-            SizedBox(
-              height: 100.h,
-              width: 185.w,
-              child: Card(
-                color: Colors.white,
-                elevation: 10,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Text("HandBag LV "),
-                      SizedBox(
-                        height: 10.h,
-                      ),
-                      const Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(r"$220"),
-                          Icon(
-                            Icons.favorite,
-                            color: Colors.red,
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+      body: Padding(
+        padding: EdgeInsets.only(right: 13.w, left: 13.w, top: 65.h),
+        child: GridView.builder(
+            physics: const BouncingScrollPhysics(),
+            clipBehavior: Clip.none,
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              childAspectRatio: 1.35,
+              crossAxisSpacing: 10.w,
+              mainAxisSpacing: 75.h,
             ),
-            Positioned(
-              bottom: 60.h,
-              right: 25.w,
-              child: Image.network(
-                "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
-                height: 120,
-              ),
-            ),
-          ],
-        ),
+            itemCount: 15,
+            itemBuilder: (context, index) => const CustomCard()),
       ),
     );
   }
