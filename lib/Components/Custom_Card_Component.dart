@@ -1,8 +1,10 @@
+import 'package:e_commerce_app/Models/Products_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomCard extends StatelessWidget {
-  const CustomCard({super.key});
+    ProductModel product;
+   CustomCard({super.key , required this.product});
 
   @override
   Widget build(BuildContext context) {
@@ -21,18 +23,18 @@ class CustomCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.end,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
-                    "HandBag LV ",
-                    style: TextStyle(color: Colors.grey),
+                   Text(
+                    product.title.split(" ").first,
+                    style: const TextStyle(color: Colors.grey),
                   ),
                   SizedBox(
                     height: 3.h,
                   ),
-                  const Row(
+                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(r"$220"),
-                      Icon(
+                      Text(r"$""${product.price}"),
+                      const Icon(
                         Icons.favorite,
                         color: Colors.red,
                       ),
@@ -47,7 +49,7 @@ class CustomCard extends StatelessWidget {
           bottom: 75.h,
           right: 25.w,
           child: Image.network(
-            "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
+            product.image,
             height: 120,
             width: 100,
           ),

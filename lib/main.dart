@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => AppCubit(),
+      create: (context) => AppCubit()..getAllProducts(),
       child: ScreenUtilInit(
         designSize: const Size(360, 690),
         minTextAdapt: true,
